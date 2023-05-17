@@ -1,0 +1,177 @@
+{% load static %}
+
+{% block cssfile1 %}
+    <link rel="stylesheet" href="{% static 'css/ticket/trips.css' %}">
+    <link rel="stylesheet" href="{% static 'css/administrator/add_routing.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ticket/cancel_ticket.css' %}">
+{% endblock cssfile1 %}
+
+
+        <div class="search-for-bus">
+            <!-- <div class="back-btn-container">
+                <button class="back-btn">Back</button>
+            </div> -->
+
+            <div class="search-f-b-container add-routing-container trips-main-container">
+
+                <div class="s-b-head">
+                    <p>Current Trips & History</p>
+                </div>
+
+                <div class="trips-data">
+
+                    <div class="left-trips-table">
+                        {% if future_trips %}
+                        <div class="current-trips incomplete-trips">
+                            <p class="trips-title">
+                                Future Trips
+                            </p>
+                            <table>
+                                <tr style="box-shadow:none !important; cursor:default !important;">
+                                    <td class="head-td">
+                                        Destination
+                                    </td>
+                                    <td class="head-td">
+                                        Time & Date
+                                    </td>
+
+                                    <td class="head-td">
+                                        Bus No & Seats
+                                    </td>
+                                    <td class="head-td">
+                                        Boarding Point
+                                    </td>
+                                </tr>
+                                {% for data in future_trips %}
+
+                                    <tr class="future-trips" t_id="{{data.tran_id}}" obj_id="{{data.id}}">
+                                        <td>
+                                            {{data.route}}
+                                        </td>
+
+                                        <td>
+                                            {{data.bus.departure_time}} , {{data.bus.departure_date|date:"d M, Y"}}
+                                        </td>
+
+                                        <td>
+                                            {{data.bus_no}} - {{data.seats}}
+                                        </td>
+                                        <td>
+                                            {{data.boarding_point}}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+
+                        </div>
+
+                        {% else %}
+                            <p style="text-align:center"> No Future Trips!</p>
+                        {% endif %}
+
+                        {% if recent_trips %}
+                        <div class="recent-trips">
+                            <p class="trips-title">
+                                Recent Trips
+                            </p>
+                            <table>
+                                <tr>
+                                    <td class="head-td">
+                                        Destination
+                                    </td>
+                                    <td class="head-td">
+                                        Time & Date
+                                    </td>
+
+                                    <td class="head-td">
+                                        Bus No & Seats
+                                    </td>
+                                    <td class="head-td">
+                                        Boarding Point
+                                    </td>
+                                </tr>
+
+                               {% for data in recent_trips %}
+                                    <tr>
+                                        <td>
+                                            {{data.route}}
+                                        </td>
+                                        <td>
+                                            {{data.bus.departure_time}} , {{data.bus.departure_date|date:"d M, Y"}}
+                                        </td>
+
+                                        <td>
+                                            {{data.bus_no}} - {{data.seats}}
+                                        </td>
+                                        <td>
+                                            {{data.boarding_point}}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                            </table>
+                        </div>
+                        {% else %}
+                            <p style="text-align:center"> No Recent Trips!</p>
+                        {% endif %}
+
+                    </div>
+                    {% if history %}
+
+                    <div class="right-trips-table">
+
+                        <div class="history">
+                            <p class="trips-title">
+                                Trips History
+                            </p>
+                            <table>
+                                <tr>
+                                    <td class="head-td">
+                                        Destination
+                                    </td>
+                                    <td class="head-td">
+                                        Time & Date
+                                    </td>
+
+                                    <td class="head-td">
+                                        Bus No & Seats
+                                    </td>
+                                    <td class="head-td">
+                                        Boarding Point
+                                    </td>
+                                </tr>
+
+                                {% for data in history %}
+                                    <tr>
+                                        <td>
+                                            {{data.route}}
+                                        </td>
+                                        <td>
+                                            {{data.bus.departure_time}} , {{data.bus.departure_date|date:"d M, Y"}}
+                                        </td>
+
+                                        <td>
+                                            {{data.bus_no}} - {{data.seats}}
+                                        </td>
+                                        <td>
+                                            {{data.boarding_point}}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+
+
+                            </table>
+                        </div>
+
+                    </div>
+                    {% else %}
+                            <p style="text-align:center"> No History!</p>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>

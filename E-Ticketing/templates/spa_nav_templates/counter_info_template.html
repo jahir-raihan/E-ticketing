@@ -1,0 +1,46 @@
+{% load static %}
+
+
+{% block cssfile1 %}
+    <link rel="stylesheet" href="{% static 'css/ticket/trips.css' %}">
+    <link rel="stylesheet" href="{% static 'css/administrator/add_routing.css' %}">
+{% endblock cssfile1 %}
+
+<div class="search-for-bus">
+
+            <div class="search-f-b-container add-routing-container trips-main-container">
+
+                <div class="s-b-head">
+                    <p>Station Infos & Contact</p>
+                </div>
+
+                <div class="trips-data">
+                    {% for route in routes %}
+                        <div class="station-data">
+                        <div class="current-trips">
+                            <p class="trips-title">
+                                {{route.from_location}} &ReverseEquilibrium; {{route.to_location}}
+                            </p>
+                            <table>
+                                <tr>
+                                    <td class="head-td">Station Name</td>
+                                    <td class="head-td">Station ID</td>
+                                    <td class="head-td">Contact</td>
+                                </tr>
+                                {% for sub_station in route.substations_set.all %}
+                                    <tr>
+                                        <td>{{sub_station.station_name}}</td>
+                                        <td>{{sub_station.id}}</td>
+                                        <td>{{sub_station.contact}}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>

@@ -1,0 +1,31 @@
+.p-wrapper-payment-info input {
+  cursor: text !important;
+}
+.s-name {
+  background: #0ca9f8;
+  color: white;
+  width: 30px;
+
+  padding: .5em;
+  margin-right:.3em;
+  -webkit-box-shadow: -1px 0px 15px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: -1px 0px 15px 1px rgba(0, 0, 0, 0.12);
+}
+.details-about-journey {
+  width: 100%;
+  max-width: 550px;
+  margin: 1em auto;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.174);
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0, 0, 0, 0.54);
+  box-shadow: 0px 3px 15px -6px rgba(0, 0, 0, 0.54);
+  border-radius: 4px;
+  padding: .5em;
+  padding-left: 1em;
+}
+
+.details-about-journey p {
+  font-size: 13px;
+  opacity: .6;
+}
+/*# sourceMappingURL=payment-info.css.map */

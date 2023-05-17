@@ -1,0 +1,43 @@
+{% load static %}
+
+                    <form id="cancel_ticket_code" autocomplete="off" method="post">
+                        {% csrf_token %}
+                        <div class="input from" style="opacity:.6" id="from">
+                            <label style="font-size:14px;" for="from" class="label"> Invoice ID</label>
+                            <div class="p-wrapper disable-hover">
+                                <input type="password" value="{{trans_id}}" disabled>
+                                <input type="hidden" name="trans_id" value="{{trans_id}}">
+                            </div>
+                        </div>
+                        <div class="input  to" style="opacity:.6" id="to">
+                            <label for="to" style="font-size:14px;"  class="label"> Ticket Phone Number </label>
+                            <div class="p-wrapper disable-hover">
+
+
+                                <input type="number"  disabled value="{{number}}">
+                                <input type="hidden" name="number" value="{{number}}">
+                            </div>
+                        </div>
+                         <div class="input date" id="date">
+                            <label style="font-size:14px;" class="label" for="date">Enter Code  (Sent to {{hash_num}})</label>
+                            <div class="p-wrapper" id="datepicker">
+
+
+                                <input type="number" name="code" required>
+
+                            </div>
+                        </div>
+
+                        <div class="btn">
+                            <button class="search-button s-f-b-btn" id="cancel_ticket_btn"  type="submit">
+                                <div class="loader s-f-b-l d-none" style="top:35%; right:48%;" id="cancel_ticket_loader">
+
+                                </div>
+                                <p>Submit Code</p>
+
+                            </button>
+                        </div>
+
+
+
+                    </form>

@@ -1,0 +1,67 @@
+.search-f-b-container {
+  margin-top: 10% !important;
+}
+
+.search-f-b-container input {
+  cursor: text !important;
+}
+
+.search-f-b-container .s-b-head img {
+  width: 70px;
+  height: 70px;
+}
+
+.search-f-b-container .s-b-head p {
+  font-size: 15px !important;
+}
+
+.opt-input {
+  opacity: .7;
+}
+
+.btn {
+  text-align: center;
+}
+
+.login-reg-btn {
+  width: 150px !important;
+}
+
+.register-link {
+  margin-top: 1.5em;
+  font-size: 12px;
+  text-align:center;
+}
+
+.register-link a {
+  color: black;
+}
+
+.register-link span {
+  color: #ff9a17;
+}
+
+.register-link:hover a {
+  color: #0ca9f8;
+  text-decoration: underline;
+}
+
+.register-link:hover span {
+  color: #0ca9f8;
+}
+
+.events-none{
+    pointer-events:none;
+}
+.btn{
+    position:relative;
+}
+.l-r-l{
+    top:30% !important;
+    right: 48% !important;
+}
+.btn-bg{
+    background:#979da3;
+
+}
+/*# sourceMappingURL=login_register.css.map */

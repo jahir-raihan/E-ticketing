@@ -1,0 +1,77 @@
+{% extends 'user/login.html' %}
+
+{% load static %}
+
+    {% block title %}
+        <title>Register</title>
+    {% endblock title %}
+
+{% block container %}
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                   <img src="{% static '/images/logo.png' %}" alt="">
+                    <p>Register To Start Line</p>
+                </div>
+                <form id="register-form">
+                    {% csrf_token %}
+
+                <div class="s-b-f">
+                    <div class="input from">
+                        <label style="font-size:14px;"  class="label">Full Name</label>
+                        <div class="p-wrapper">
+                            <input type="text" name="name" placeholder="Enter full Name . . ." required>
+                        </div>
+                    </div>
+                    <div class="input to" >
+                        <label  style="font-size:14px;" class="label">Phone </label>
+                        <div class="p-wrapper" id="phone">
+
+                            <input type="number" name="phone" placeholder="Enter Phone Number . . ." required>
+                        </div>
+                    </div>
+
+                    <div class="input opt-input" id="date">
+                        <label style="font-size:14px;" class="label" for="date">Email</label>
+                        <div class="p-wrapper " id="email">
+
+                        
+                            <input type="email" name="email" placeholder="Enter your email . . ." required>
+                            
+                        </div>
+                    </div>
+                    <div class="input to" >
+                        <label  style="font-size:14px;" class="label">Password </label>
+                        <div class="p-wrapper pass">
+
+                            <input type="password" name="password1" id="pass1" placeholder="Create Password . . ." required>
+                        </div>
+                    </div>
+                    <div class="input  to" >
+                        <label  style="font-size:14px;" class="label">Confirm Password </label>
+                        <div class="p-wrapper pass">
+
+                            <input type="password" name="password2" id="pass2" required placeholder="Re-Enter Password . . .">
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <div class="loader s-f-b-l l-r-l d-none" id="register-loader">
+
+                        </div>
+                        <button class="search-button login-reg-btn" type="submit" id="log-reg-btn">
+                            Register
+                            
+                        </button>
+                    </div>
+
+                    <p class="register-link"><a href="{% url 'login' %}"> Already have an account ? <span> Login </span></a></p>
+                    
+                </div>
+                </form>
+            </div>
+
+           
+
+       </div>
+{% endblock container %}

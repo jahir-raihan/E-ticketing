@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block cssfile1 %}
+        <link rel="stylesheet" href="{% static 'css/administrator/add_routing.css' %}">
+        <link rel="stylesheet" href="{% static 'css/ticket/cancel_ticket.css' %}">
+    {% endblock cssfile1 %}
+
+    {% block title %}
+        <title id="title"> Add Staff </title>
+    {% endblock title %}
+
+    {% block jsfile1 %}
+        <script src="{% static 'js/administrator/add_staff.js' %}"></script>
+    {% endblock jsfile1 %}
+
+
+    {% block container %}
+       <div class="search-for-bus">
+            <div class="back-btn-container">
+                <button onclick="history.back()" class="back-btn">Back</button>
+            </div>
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <p>Register Staff & Admin</p>
+                </div>
+                <form id="register-staff">
+                    {% csrf_token %}
+
+                <div class="s-b-f">
+                    <div class="input from" id="from">
+                        <label style="font-size:14px;"  class="label">Full Name</label>
+                        <div class="p-wrapper">
+                           <input type="text" name="name" placeholder="Enter Staff Full Name . . .">
+                        </div>
+                    </div>
+                    <div class="input to">
+                        <label  style="font-size:14px;" class="label">Email </label>
+                        <div class="p-wrapper" id="email">
+
+                            <input type="email" placeholder="Enter Email . . ." name="email" required>
+                            
+                        </div>
+                    </div>
+
+                    <div class="input date">
+                        <label style="font-size:14px;" class="label" >Phone Number</label>
+                        <div class="p-wrapper" id="phone">
+
+                        
+                            <input type="number" name="phone" required   placeholder="Enter Staff Number . . ."  >
+                            
+                        </div>
+                    </div>
+                    <div class="input date" id="date">
+                        <label style="font-size:14px;" class="label">Select Permission Level</label>
+                        <div class="p-wrapper">
+
+                        
+                            <select name="permission" id="permission">
+                                <option>--------</option>
+                                <option value="staff">Staff</option>
+                                <option value="admin">Admin</option>
+                                
+                            </select>
+
+                            
+                        </div>
+                    </div>
+
+                     <div class="input date d-none" id="s-staff-station">
+                        <label style="font-size:14px;" class="label">Select Staff Station</label>
+                        <div class="p-wrapper">
+
+
+                          {{form.station_name}}
+
+
+                        </div>
+                    </div>
+
+                    <div class="input to" >
+                        <label  style="font-size:14px;" class="label">Password </label>
+                        <div class="p-wrapper pass">
+
+                            <input type="password" id="pass1" name="password1" placeholder="Create Password . . .">
+                        </div>
+                    </div>
+                    <div class="input to" >
+                        <label  style="font-size:14px;" class="label">Confirm Password </label>
+                        <div class="p-wrapper pass">
+
+                            <input type="password" id="pass2" name="password2" placeholder="Re-Enter Password . . .">
+                        </div>
+                    </div>
+                    <div class="create-route-confirm">
+                        <div class="loader-c-r-c d-none l-r-l" id="loader-reg-staff">
+                        </div>
+                        <button class="c-r-c" id="reg-staff-btn" type="submit">Register</button>
+                            
+
+                    </div>
+                    
+                </div>
+                </form>
+            </div>
+
+
+
+       </div>
+
+    {% endblock container %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block bottom_nav %}
+    {% endblock bottom_nav %}
+    <script>
+        $(document).ready(function(){
+
+             $('#permission').on('change', function(){
+                console.log('triggred')
+                try{
+                    var selectedEle = $(this).children("option:selected").val();
+                    if (selectedEle === 'staff'){
+                        console.log('do it')
+                        document.getElementById('s-staff-station').classList.remove('d-none');
+                        var ele = document.getElementById('#id_station_name').required = true;
+                        console.log('come here')
+
+
+                    }
+                    else{
+                        var ele = document.getElementById('#id_station_name').required = false;
+                        document.getElementById('s-staff-station').classList.add('d-none');
+                    }
+                }
+                catch{}
+
+
+             })
+        })
+    </script>

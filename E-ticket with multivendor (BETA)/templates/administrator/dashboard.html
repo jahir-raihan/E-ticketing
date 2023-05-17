@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+    {% block cssfile1 %}
+        <link rel="stylesheet" href="{% static 'css/ticket/cancel_ticket.css' %}">
+        <link rel="stylesheet" href="{% static 'css/administrator/add_routing.css' %}">
+        <link rel="stylesheet" href="{% static 'css/administrator/dashboard.css' %}">
+    {% endblock cssfile1 %}
+    {% block jsfile1 %}
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    {% endblock jsfile1 %}
+
+    {% block title %}
+        <title id="title">Dashboard</title>
+    {% endblock title %}
+
+
+    {% block container %}
+        <div class="search-for-bus">
+           <div class="back-btn-container">
+                <button onclick="history.back()" class="back-btn">Back</button>
+            </div>
+            
+            <div class="search-f-b-container add-routing-container dashboard-container">
+                
+                <div class="d-left">
+                    <div class="statistics">
+                        <div class="d-u-title">
+                            <p>Statistic</p>
+                        </div>
+
+                        <div class="statistic-container">
+
+                            <div class="card" id="s-card1">
+                                <div class="card-body">
+                                    <img src="{% static 'images/passenger.png' %}" alt="">
+                                    <div class="card-info">
+                                        <p>Passengers</p>
+                                        <p>152.2k</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="card" id="s-card2">
+                                <div class="card-body card-body-earnings">
+                                    <img src="{% static 'images/earnings.png' %}" alt="">
+                                    <div class="card-info">
+                                        <p>This Month</p>
+                                        <p><span class="up-arrow">$152.2k &uarr;</span> <span class="do-arrow">$52.3k &darr;</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card" id="s-card3">
+                                <div class="card-body card-body-user">
+                                    <img src="{% static 'images/user_1.png' %}" alt="">
+                                    <div class="card-info">
+                                        <p>Reg-Users</p>
+                                        <p>5.6k </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" id="s-card4">
+                                <div class="card-body card-body-user">
+                                    <img src="{% static 'images/satisfaction.png' %}" alt="">
+                                    <div class="card-info">
+                                        <p>Satisfaction</p>
+                                        <p>77% </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="yearly-analysis">
+                        <div class="d-u-title">
+                            <p>Yearly Analysis</p>
+                        </div>
+
+                        <div class="yearly-analysis-container">
+                            <div class="chart-table" id="chart-table">
+                                <div id='myDiv' class="mydiv"></div>
+                                    <script src='https://cdn.plot.ly/plotly-2.12.1.min.js'></script>
+                                    <script src="/test.js"></script>
+                                </div>
+                            <div class="total-earnings">
+                                <div class="t-e-container">
+                                    <div class="head">
+                                        <img src="{% static 'images/total-earnings.png' %}" alt="">
+                                        <p>Total Earnings (2022)</p>
+                                    </div>
+                                    <p class="amount">$54000</p>
+                                    <p class="small">+30%  than last year</p>
+                                    <div class="view-btn-t-e">
+                                        <button>View All Info</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="recent-bookings">
+                        <div class="r-b-head">
+                            <div class="d-u-title">
+                                <p>Recent Bookings</p>
+                            </div>
+                            <div class="search">
+                            
+                                <input type="text">
+                                <button class="srch-btn loader-btn" disabled>
+                                    <div class="loader-c-r-c " id="loader-c-r-c">
+                                    </div>
+                                    Search
+                                </button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="r-b-container">
+                            <div class="booking-data">
+                                <table>
+                                    <tr class="head-tr">
+                                        <td class="head-td">User</td>
+                                        <td class="head-td">Destination & Time</td>
+
+                                        <td class="head-td">Fare & Bus Info</td>
+                                        <td class="head-td">Bus No</td>
+                                    </tr>
+
+                                    <div class="recent-booking-data" id="recent-booking-data">
+                                        <tr>
+                                            <td class="td-center">
+
+                                                <div class="p-pic-info">
+                                                    <p class="name">Jahir Raihan Joy</p>
+                                                    <p class="number">01687277560</p>
+                                                </div>
+                                                
+                                            </td>
+                                            <td class="td-center">
+                                                <p>Feni-Dhaka</p>
+                                                <p>11:00 PM, 11 July, 2022</p>
+                                            </td>
+
+                                            <td class="td-center">
+                                                <p>Non AC</p>
+                                                <p>1400 TK</p>
+                                            </td>
+                                            <td class="td-center">
+                                                <p>01</p>
+                                            </td>
+                                        </tr>
+
+
+                                    </div>
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="d-right">
+                    <div class="search-section">
+                       
+                        <div class="search">
+                            
+                            <input type="text">
+                            <button class="srch-btn loader-btn" disabled>
+                                <div class="loader-c-r-c " id="loader-c-r-c">
+                                </div>
+                                Search
+                            </button>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="staffs">
+                        <div class="d-u-title">
+                            <p>Staffs</p>
+                        </div>
+
+                        <div class="d-right-user-container">
+                            <a href="#">
+                                <div class="user">
+                                    
+
+                                    
+                                    <div class="user-info">
+                                        <p class="name">Majubur Rahman Rony</p>
+                                        <p>01720988071</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="user">
+                                
+                                    <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                                
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                    <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                                
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                    <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                                
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                    <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                                
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            
+
+                            
+                        </div>
+
+                    </div>
+                    <div class="normal-users">
+                        <div class="d-u-title">
+                            <p>Normal Users</p>
+                        </div>
+                        <div class="d-right-user-container">
+
+                            <div class="user">
+                                
+                                <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                            
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                            
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                            
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                            
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                            <div class="user">
+                                
+                                <img class="user-img" src="/images/IMG_20220105_183432-02.jpeg" alt="">
+                            
+                                <div class="user-info">
+                                    <p class="name">Majubur Rahman Rony</p>
+                                    <p>01720988071</p>
+                                </div>
+                            </div>
+                           
+                            
+                        </div>
+                    </div>
+
+                    <div class="view-all-user-links">
+
+                        <div class="staff-link">
+                            <a href="#">view all staffs</a>
+                        </div>
+
+                        <div class="user-link">
+                            <a href="#">view all users</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endblock container %}
+
+   
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block bottom_nav %}
+    {% endblock bottom_nav %}

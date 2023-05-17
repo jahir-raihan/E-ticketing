@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block cssfile1 %}
+        <link rel="stylesheet" href="{% static '/css/ticket/cancel_ticket.css' %}">
+    {% endblock cssfile1 %}
+
+    {% block jsfile1 %}
+        <script src="{% static 'js/only_for_s_f_b.js' %}"></script>
+
+    {% endblock jsfile1 %}
+
+    {% block title %}
+        <title id="title">Cancel Ticket</title>
+    {% endblock title %}
+
+{% block container %}
+
+       <div class="search-for-bus cancel-ticket-container">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <p>Cancel Ticket</p>
+                </div>
+                <div class="s-b-f" id="cancel_ticket_container">
+                    <form autocomplete="off" id="cancel_ticket_form">
+                        {% csrf_token %}
+                        <div class="input from" id="from">
+                            <label style="font-size:14px;" for="from" class="label"> Invoice ID</label>
+                            <div class="p-wrapper">
+                                <input type="text" name="trans_id" required>
+                            </div>
+                        </div>
+                        <div class="input to" id="to">
+                            <label for="to" style="font-size:14px;"  class="label"> Ticket Phone Number </label>
+                            <div class="p-wrapper">
+
+
+                                <input type="number" name="number" required>
+                            </div>
+                        </div>
+
+                        <div class="input date" id="date">
+                            <label style="font-size:14px; opacity: .6;" class="label" for="date">(Optional) Why are you Cancelling? </label>
+                            <div class="p-wrapper" id="datepicker">
+
+
+                                <textarea name="opt_txt_cancel" placeholder="Why are you Cancelling  the Ticket ?" id="opt-txt" ></textarea>
+
+                            </div>
+                        </div>
+                       <div class="btn">
+                            <button class="search-button s-f-b-btn" id="cancel_ticket_btn"  type="submit">
+                                <div class="loader s-f-b-l d-none" style="top:35%; right:48%;" id="cancel_ticket_loader">
+
+                                </div>
+                                <p>Submit</p>
+
+                            </button>
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="ad-container">
+                <img draggable="false" src="{% static '/images/refund.jpg' %}" alt="refund image">
+                <div class="ad-c-img-mask">
+                    <div class="refund-head">
+                        <p>Refund Policy & Guidelines</p>
+                    </div>
+                    <p class="steps">**Steps to Cancel Ticket</p>
+                    <ul>
+                        <li>Enter your Ticket ID</li>
+                        <li>Enter the code sent to Your Ticket Registered Email.</li>
+                    </ul>
+                    <div class="note">
+                        <p class="steps">**Terms and Conditions</p>
+                        <ul>
+                            <li>Cancelling Tickets will not be available in certain periods of the Year.
+                            Reasons can be for Festivals.</li>
+                            <li>Also you can't cancel the ticket which will deprature in range of 2 days, if you booked the ticket online.</li>
+                        </ul>
+                        <p class="policy-txts">
+
+
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+       </div>
+
+
+{% endblock container %}
+
+
+
+    {% block bottom_nav %}
+
+    <nav id="bottom-nav" class="main-nav bottom-nav">
+        <div class="b-n-container">
+
+
+            <section class="counter-info m-nav-section" s_no="1" id="counter-info">
+                <div class="icon">
+                    <img src="{% static 'images/info.png' %}" alt="info icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Counter Infos</p>
+                </div>
+            </section>
+            <section class="cancel-tickets active-nav m-nav-section" s_no="2" id="cancel-tickets">
+                <div class="icon">
+                    <img src="{% static 'images/cancel.png' %}" alt="cancel icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Cancel Ticket</p>
+                </div>
+            </section>
+            <section class="nav-home  m-nav-section" s_no="3" id="nav-home">
+                <div class="icon">
+                    <img src="{% static 'images/home.png' %}" alt="home icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Home</p>
+                </div>
+            </section>
+            <section class="trips m-nav-section" s_no="4" id="trips">
+                <div class="icon">
+                    <img src="{% static 'images/trips.png' %}" alt="trips icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Trips</p>
+                </div>
+            </section>
+            <section class="options m-nav-section" s_no="5" id="options-settings">
+                <div class="icon">
+                   <img src="{% static 'images/settings.png' %}" alt="options icon">
+
+                </div>
+                <div class="icon-txt">
+                    <p>Optiions</p>
+                </div>
+            </section>
+        </div>
+    </nav>
+
+    {% endblock bottom_nav %}

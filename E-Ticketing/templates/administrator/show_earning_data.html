@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block cssfile1 %}
+    <link rel="stylesheet" href="{% static 'css/administrator/profile.css' %}">
+{% endblock cssfile1 %}
+
+    {% block jsfile1 %}
+        <script src="{% static 'js/administrator/dashboard.js' %}"></script>
+    {% endblock jsfile1 %}
+
+    {% block title %}
+        <title id="title">Earning Information</title>
+    {% endblock title %}
+
+    {% block container %}
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container ">
+                <div class="profile-container">
+
+                    
+                    <div class="filter-area">
+                        <p>Show Data By :</p>
+                        <select name="filter" id="trips-data-admin-filter">
+                            <option>--------</option>
+                            <option value="day">Day</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
+                        </select>
+                    </div>
+
+                    <div class="recent-trips">
+                       
+                        <p class="r-t-title" id="filter-title">
+                            Data By Day
+                        </p>
+                        <div class="r-t-container" id="r-t-container">
+                            <div class="r-trip booking-data">
+                                <table>
+                                    <tr class="head-tr">
+                                        <td class="head-td">
+                                            <p>Date & Time</p> 
+                                        </td>
+                                        <td class="head-td">
+                                            <p>Trips Made</p>
+                                        </td>
+                                        <td class="head-td">
+                                            <p>Total Earnings</p>
+                                        </td>
+                                    </tr>
+
+                                    {% for data in data %}
+                                         <tr>
+                                            <td class="td-center">
+                                                <p>{{data.date|date:"%d %B, %Y"}}</p>
+                                            </td>
+                                            <td class="td-center">
+                                                <p>{{data.count}}</p>
+                                            </td>
+                                            <td class="td-center">
+
+                                                <p>{{data.amount}}</p>
+                                            </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                   
+                                </table>
+                                
+                            </div>
+                            
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+       </div>
+    {% endblock container %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block bottom_nav %}
+    {% endblock bottom_nav %}

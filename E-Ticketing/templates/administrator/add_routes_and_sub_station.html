@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block cssfile1 %}
+        <link rel="stylesheet" href="{% static 'css/administrator/add_routing.css' %}">
+        <link rel="stylesheet" href="{% static 'css/ticket/cancel_ticket.css' %}">
+    {% endblock cssfile1 %}
+
+    {% block title %}
+        <title id="title"> Add New Route </title>
+    {% endblock title %}
+
+    {% block jsfile1 %}
+        <script src="{% static 'js/administrator/add_route.js' %}"></script>
+    {% endblock jsfile1 %}
+
+
+
+    {% block container %}
+
+        <div class="search-for-bus">
+            <div class="back-btn-container">
+                <button onclick="history.back()" class="back-btn">Back</button>
+            </div>
+            <form id="create-route">
+                {% csrf_token %}
+
+            <div class="search-f-b-container add-routing-container">
+                
+                <div class="s-b-head">
+                    <p>Add Route & Substations</p>
+                </div>
+
+                <form>
+                    <div class="destinations">
+                        <div class="destination">
+                            <div class="starting-point">
+                                <div class="input date">
+                                    <label style="font-size:14px;opacity: .8;" class="label" >Starting Point</label>
+                                    <div class="p-wrapper">
+                                    
+                                        <input type="text" name="from" required  placeholder="Feni"  >
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="starting-point">
+                                <div class="input date" >
+                                    <label style="font-size:14px; opacity: .8;" class="label" >Ending Point</label>
+                                    <div class="p-wrapper">
+                                        <input type="text" name="to" required  placeholder="Dhaka"  >
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="destination">
+                            <div class="starting-point">
+                                <div class="input">
+                                    <label style="font-size:14px;opacity: .8;" class="label" >Trip Cost (Business AC) </label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="Number" required name="cost_b_ac"  placeholder="Ex: 1400"  >
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="starting-point">
+                                <div class="input">
+                                    <label style="font-size:14px;opacity: .8;" class="label" >Trip Cost (Business Non AC) </label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="Number" required name="cost_b_non_ac">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="starting-point">
+                                <div class="input">
+                                    <label style="font-size:14px;opacity: .8;" class="label" >Trip Cost (Economy AC) </label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="Number" required name="cost_e_ac">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="starting-point">
+                                <div class="input">
+                                    <label style="font-size:14px;opacity: .8;" class="label" >Trip Cost (Economy Non AC) </label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="Number" required  name="cost_e_non_ac">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="s-b-head add-route-h-title main-station-head">
+                        <p>Main Station</p>
+                    </div>
+                    <div class="substations">
+                        <div class="stations destination">
+
+                            <div class="station starting-point">
+
+
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label" >Main Station Name</label>
+                                    <div class="p-wrapper">
+
+
+                                        <input type="text" name="main_station" required  placeholder="Feni Main Station"  >
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="station starting-point">
+
+
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label">Contact Number</label>
+                                    <div class="p-wrapper">
+
+
+                                        <input type="number" name="main_station_c_number" required placeholder="018xx xxxxxx"  >
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div class="s-b-head add-route-h-title">
+                        <p>Substations</p>
+                    </div>
+
+                    <div class="substations">
+                        <div class="stations destination">
+
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label" >Sub-Station Name(1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="text" name="sub_station"  required  placeholder="Mohipal"  >
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label" >Distance Time From (Main Station)(1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="number" name="distance_time" required placeholder="20"  >
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label">Contact Number(1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="number" name="sub_station_contact" required  placeholder="018xx xxxxxx"  >
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="add-new-sub-station" id="add_new_sub_station">
+                            
+                            <button type="button" onclick="add_sub_station()">Add Another Sub-Station</button>
+                        </div>
+                    </div>
+
+                    <div class="s-b-head add-route-h-title">
+                        <p>Create Departure Schedule</p>
+                    </div>
+
+                    <div class="schedule">
+                        <div class="stations destination">
+
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label">Bus Type (1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <select name="bus_type" required id="">
+                                            <option value="">---------</option>
+                                            <option value="Business AC">Business AC</option>
+                                            <option value="Business Non AC">Business Non AC</option>
+                                            <option value="Economy AC">Economy AC</option>
+                                            <option value="Economy Non AC">Economy Non AC</option>
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label" >Bus No (1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="number" name="bus_no"  required placeholder="Ex: 01"  >
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label">Departure Time (1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="time" name="departure_time"  required placeholder="10:30 AM">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="station starting-point">
+
+                            
+                                <div class="input">
+                                    <label style="font-size:14px; opacity: .8;" class="label">Seat Capacity (1)</label>
+                                    <div class="p-wrapper">
+            
+                                    
+                                        <input type="number"  required name="seat_capacity" placeholder="Ex: 40">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="add-new-sub-station sc-itm" id="add_new_schedule">
+                            
+                            <button type="button" onclick="add_schedule()">Create Another Schedule</button>
+                        </div>
+
+                    </div>
+
+                    <div class="create-route-confirm ">
+                        <div class="loader-c-r-c d-none" id="loader-c-r-c">
+                        </div>
+                        <button class="c-r-c" id="c-r-c-btn" type="submit">Create Route</button>
+                    </div>
+                </form>
+            </div>
+            </form>
+        </div>
+
+    {% endblock container %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block bottom_nav %}
+    {% endblock bottom_nav %}

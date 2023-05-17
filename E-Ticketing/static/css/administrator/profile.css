@@ -1,0 +1,134 @@
+.profile-container {
+  width: 80%;
+  margin: auto;
+  padding: 1em 0;
+}
+
+.profile-container img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.517);
+  padding: .3em;
+  display: block;
+  margin: 1em auto;
+}
+
+.profile-container .name-phone {
+  text-align: center;
+  margin: 1em 0 2em 0;
+}
+
+.profile-container .name-phone p {
+  font-size: 13px;
+}
+
+.profile-container .name-phone .u-name {
+  font-size: 15px;
+}
+
+.profile-container .other-info .o-i-flex-box {
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile-container .other-info .o-i-flex-box p {
+  opacity: .8;
+  font-size: 15px;
+}
+
+.booking-data {
+  margin-top: 1.5em;
+}
+
+.booking-data table {
+  opacity: .8;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.booking-data table p {
+  font-size: 12px;
+}
+
+.booking-data table .head-td {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.413);
+  font-size: 14px;
+}
+
+.booking-data table .head-tr {
+  height: 25px;
+}
+
+.booking-data table tr {
+  border: 1px solid rgba(0, 0, 0, 0.413);
+  height: 55px;
+}
+
+.booking-data table .td-center {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.413);
+}
+
+.r-t-title {
+  opacity: .7;
+  font-size: 14px;
+}
+
+.recent-trips {
+  border-top: 1px solid rgba(0, 0, 0, 0.459);
+  padding-top: 1em;
+  margin-top: 1.5em;
+}
+
+.recent-trips .r-t-container a {
+  color: black;
+  text-decoration: none;
+  font-size: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2em;
+}
+
+.recent-trips .r-t-container a:hover {
+  color: #047adb;
+  text-decoration: underline;
+}
+
+.filter-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter-area p {
+  font-size: 14px;
+  opacity: .8;
+}
+
+.filter-area select {
+  outline: none;
+  width: 150px;
+  padding: .3em .5em;
+  border-radius: 4px;
+  opacity: .8;
+}
+/*# sourceMappingURL=profile.css.map */

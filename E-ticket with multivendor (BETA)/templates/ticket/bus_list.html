@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block cssfile1 %}
+    <link rel="stylesheet" href="{% static 'css/ticket/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ticket/bus-list.css' %}">
+
+
+{% endblock cssfile1 %}
+
+{% block title %}
+<title id="title">{{site_title}}</title>
+{% endblock title %}
+
+{% block jsfile1 %}
+
+    <script src="{% static 'js/bus_lis.js' %}"></script>
+    <script src="{% static 'js/only_for_s_f_b.js' %}"></script>
+
+
+{% endblock jsfile1 %}
+
+
+
+
+{% block container %}
+{% csrf_token %}
+
+        <div class="bus-list-container">
+            <div class="search-result">
+                <p>Search results for . . . </p>
+                <p>{{from}} - {{to}} ( {{date|date:"d M, Y"}} )</p>
+            </div>
+
+            <div class="bus-list">
+
+                <div class="bus-list-header">
+                    <table>
+                        <tr>
+                            <td>Coach Info</td>
+                            <td>Departure Time</td>
+                            
+                            <td>Bus No</td>
+                            <td>Seats</td>
+                           
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="buses">
+
+                    {% for bus in buses %}
+                        <div class="bus" id="bus_no{{forloop.counter}}">
+                             <div class="loader d-none" id="bus_loader{{forloop.counter}}">
+
+
+                             </div>
+
+
+                            <table class="bus-info-table" counter="{{forloop.counter}}" bus_id="{{bus.id}}" route="{{from}} {{to}}"  id="bus_info_table{{forloop.counter}}">
+                                <tr>
+                                    <td>
+                                        <p>{{bus.bus_type}}</p>
+
+                                    </td>
+                                    <td>
+                                        <p>{{bus.departure_time}}</p>
+                                        <p>{{bus.departure_date}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{bus.bus_id}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{bus.seats_available}} seats available</p>
+                                        <button>view seats</button>
+                                    </td>
+
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    {% endfor %}
+
+
+
+                    
+
+                    
+
+
+                </div>
+                
+
+            </div>
+        </div>
+
+{% endblock container %}

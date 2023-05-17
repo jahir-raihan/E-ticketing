@@ -1,0 +1,150 @@
+.proceed-to-payment-btn {
+  position: relative;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.proceed-to-payment-btn .p-t-p {
+  width: 100%;
+  border-radius: 4px;
+  margin: 1em 0 .5em 0;
+  padding: .5em;
+  border: none;
+  color: white;
+  background: #008cff;
+}
+
+.p-t-p:hover {
+  cursor: pointer;
+}
+
+.bus-loader {
+  top: 50%;
+  right: 46%;
+  height: 35px;
+  width: 35px;
+}
+
+.boarding-point {
+  margin: 1.5em 0 1em 0;
+}
+
+.boarding-point .p-wrapper {
+  margin-top: .5em;
+  border: 1.5px solid rgba(0, 0, 0, 0.196);
+  width: 100%;
+  border-radius: 4px;
+  padding-right: .5em;
+  padding: .2em .5em;
+  position: relative;
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 3px 10px -6px rgba(0, 0, 0, 0.24);
+}
+
+.boarding-point .p-wrapper lable {
+  display: block;
+}
+
+.boarding-point .p-wrapper select {
+  width: 100%;
+  display: block;
+  border: none;
+  height: 30px;
+  opacity: .8;
+  outline: none;
+  cursor: pointer;
+}
+
+.buy {
+  position: relative;
+}
+
+.refresh {
+  position: absolute;
+  left: 10px;
+  top: 120px;
+  z-index: 2;
+}
+
+.refresh button {
+  border: none;
+  background: #0ca9f8;
+  padding: .3em 1em;
+  color: white;
+  border-radius: 24px;
+  font-size: 12px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0, 0, 0, 0.877);
+  box-shadow: 1px 4px 11px -6px rgba(0, 0, 0, 0.877);
+}
+
+.refresh button:hover {
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0, 0, 0, 0.977);
+  box-shadow: 1px 4px 12px -5px rgba(0, 0, 0, 0.977);
+}
+
+.loader-bus-p-t-p {
+  background: #f3f3f3 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: rgba(0, 0, 0, 0.593) !important;
+}
+
+.loader-bus-p-t-p p {
+  opacity: .6;
+}
+
+.loader-bus-p-t-p:hover {
+  cursor: progress !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.loader-p-t-p {
+  border: 4px solid #f3f3f3;
+  border-top: 5px solid black;
+  border-right: 5px solid black;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 47%;
+  top: 38%;
+  border-radius: 50%;
+  -webkit-animation: spin .5s linear infinite;
+          animation: spin .5s linear infinite;
+}
+
+.loader-d-none {
+  display: none;
+}
+
+@media only screen and (max-width: 650px) {
+  .buy-seats {
+    display: block;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 1em auto;
+  }
+  .buy-seats .seat-table {
+    width: 250px !important;
+    margin: auto;
+    margin-top:3em;
+    margin-bottom: 1em;
+  }
+  .buy-seats .price-section {
+    border-top: 1px solid rgba(0, 0, 0, 0.571);
+    padding-top: 1em;
+  }
+  .buy-seats .price-table {
+    width: 250px;
+  }
+  .buy-seats .price-table tr td {
+    padding: .2em;
+    min-width: unset;
+    min-height: unset;
+  }
+}
+/*# sourceMappingURL=bus-list.css.map */

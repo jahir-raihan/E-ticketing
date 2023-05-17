@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssfile1 %}
+    <link href="{% static 'css/ticket/payment-info.css' %}" rel="stylesheet">
+    <link href="{% static 'css/ticket/bus-list.css' %}" rel="stylesheet">
+    <link href="{% static 'css/ticket/search_bus.css' %}" rel="stylesheet">
+{% endblock cssfile1 %}
+{% block title %}
+    <title>Contact & Info</title>
+{% endblock title %}
+
+{% block jsfile1 %}
+    <script src="{% static 'js/passenger.js' %}"></script>
+{% endblock jsfile1 %}
+
+{% block container %}
+
+       <div class="search-for-bus">
+           <div class="details-about-journey" style="padding:1em;">
+               <p>Seats :
+                   {% for seat in seats %}
+                      <span class="s-name">{{seat}}</span>
+                   {% endfor %}
+
+
+               </p>
+
+
+
+           </div>
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <p>Contact & Information</p>
+                </div>
+                <form id="contact_information_form">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{queue_id}}" id="queue_id" name="queue_id">
+                    <div class="s-b-f">
+                        <div class="input from" id="from">
+                            <label style="font-size:14px;opacity: .8;" for="from" class="label">Name</label>
+                            <div class="p-wrapper p-wrapper-payment-info">
+                                <input type="text" name="name" placeholder="Enter your name . . ." required>
+                            </div>
+
+                        </div>
+                        <div class="input to" id="to">
+                            <label for="to" style="font-size:14px;opacity: .8;" class="label">Number </label>
+                            <div class="p-wrapper p-wrapper-payment-info">
+                                <input type="number" name="number" maxlength="11" placeholder="+88 016xxxxxxxx" required>
+                            </div>
+
+                        </div>
+
+                        <div class="input date" id="date">
+                            <label style="font-size:14px;opacity: .8;" class="label" for="email">Email</label>
+                            <div class="p-wrapper p-wrapper-payment-info">
+
+
+                                <input type="email"  name="email"  placeholder="Enter your email . . ." required >
+
+                            </div>
+                        </div>
+                        <div class="proceed-to-payment-btn btn">
+                            <div class="loader-p-t-p d-none" id="loader-p-t-p-f">
+                            </div>
+                            <button class="p-t-p" id="loader-bus-p-t-p-f" type="submit">Proceed to payment</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+
+       </div>
+
+
+{% endblock container %}
+
+{% block footer %}
+{% endblock footer %}

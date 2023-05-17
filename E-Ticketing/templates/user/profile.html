@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block cssfile1 %}
+    <link rel="stylesheet" href="{% static 'css/administrator/profile.css' %}">
+{% endblock cssfile1 %}
+    {% block title %}
+        <title id="title">Profile</title>
+    {% endblock title %}
+
+    {% block container %}
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container ">
+                <div class="profile-container">
+
+                    
+                    <img src="{% static 'images/user_1.png' %}" alt="">
+                    <div class="name-phone">
+                        <p class="u-name">{{request.user|title}}</p>
+                        {% if request.user.is_authenticated %}
+                            <p>{{request.user.phone}}</p>
+                        {% else %}
+                            <p>No Data ! Anonymous User</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="other-info">
+                        <div class="o-i-flex-box">
+                            <p>Total Trips Made : </p>
+                            <p>{{count}}</p>
+                        </div>
+                        <div class="o-i-flex-box">
+                            <p>Total Spent : </p>
+                            <p>{{amount}} BDT</p>
+                        </div>
+                    </div>
+
+                    <div class="recent-trips">
+                       
+                        <p class="r-t-title">
+                            Recent Trips
+                        </p>
+                        <div class="r-t-container">
+                            <div class="r-trip booking-data">
+                                <table>
+                                    <tr class="head-tr">
+                                        <td class="head-td">
+                                            <p>Destination</p> 
+                                        </td>
+                                        <td class="head-td">
+                                            <p>Time & Date</p>
+                                        </td>
+                                        <td class="head-td">
+                                            <p>Bus & Fare</p>
+                                        </td>
+                                    </tr>
+
+                                    {% for data in trans_data %}
+                                        <tr>
+                                            <td class="td-center">
+                                                <p>{{data.route}}</p>
+                                            </td>
+                                            <td class="td-center">
+
+                                                <p>{{data.date_time|date:"%h:%M %p, %d %F, %Y"}}</p>
+                                            </td>
+                                            <td class="td-center">
+                                                <p>{{data.bus.bus_type}}</p>
+                                                <p>{{data.amount}}</p>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+
+
+                                </table>
+                                
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="ad-container">
+                <img draggable="false" src="/images/istockphoto-879364174-170667a.jpg" alt="">
+            </div> -->
+
+       </div>
+
+    {% endblock container %}
+
+    {% block footer %}
+
+    {% endblock footer %}
+
+    {% block bottom_nav %}
+        <nav id="bottom-nav" class="main-nav bottom-nav">
+        <div class="b-n-container">
+
+
+            <section class="counter-info m-nav-section" s_no="1" id="counter-info">
+                <div class="icon">
+                    <img src="{% static 'images/info.png' %}" alt="info icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Counter Infos</p>
+                </div>
+            </section>
+            <section class="cancel-tickets m-nav-section" s_no="2" id="cancel-tickets">
+                <div class="icon">
+                    <img src="{% static 'images/cancel.png' %}" alt="cancel icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Cancel Ticket</p>
+                </div>
+            </section>
+            <section class="nav-home  m-nav-section" s_no="3" id="nav-home">
+                <div class="icon">
+                    <img src="{% static 'images/home.png' %}" alt="home icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Home</p>
+                </div>
+            </section>
+            <section class="trips m-nav-section" s_no="4" id="trips">
+                <div class="icon">
+                    <img src="{% static 'images/trips.png' %}" alt="trips icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Trips</p>
+                </div>
+            </section>
+            <section class="options"  id="options-settings">
+                <div class="icon">
+                   <img src="{% static 'images/settings.png' %}" alt="options icon">
+
+                </div>
+                <div class="icon-txt">
+                    <p>Optiions</p>
+                </div>
+            </section>
+        </div>
+    </nav>
+    {% endblock bottom_nav %}

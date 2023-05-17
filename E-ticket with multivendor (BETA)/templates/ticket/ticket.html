@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+
+        function download(){
+            document.getElementById('download').style.display='none';
+            window.print();
+            document.getElementById('download').style.display='block';
+        }
+    </script>
+    <link rel="stylesheet" href="{% static 'css/ticket/ticket.css' %}">
+    <title>Ticket</title>
+</head>
+<body>
+    <div class="ticket-container">
+
+        <div class="ticket">
+            <div class="ticket-header">
+                <p style="font-weight:bold;">{{data.user_name}} - {{data.user_phone}}</p>
+                <p><span style="font-weight:bold">Invoice ID :</span> {{data.tran_id}}</p>
+            </div>
+
+            <div class="ticket-body">
+
+                <div class="sec-1">
+                    <div class="box">
+                        <p class="box-con"><span>Date : </span> {{data.bus.departure_date|date:"d M, Y"}}</p>
+                    </div>
+                    <div class="box">
+                        <p class="box-con"><span>Time : </span> {{data.bus.departure_time}},{{data.bus.departure_date|date:"l"}} </p>
+                    </div>
+                    <div class="box">
+                        <p class="box-con"><span>From : </span>{{from}}</p>
+                    </div>
+                    <div class="box">
+                        <p class="box-con"><span>To : </span> {{to}}</p>
+                    </div>
+                    
+                    
+                    
+                </div>
+
+                <div class="sec-1">
+                    <div class="boarding-point-head">
+                        <p>Boarding Point</p>
+                    </div>
+                    <p class="b-point">{{data.boarding_point}} (Time + {{delay}} minutes)</p>
+                    <p class="bus-no"><span>Bus No : </span>{{data.bus_no}}</p>
+                    <div class="seats box">
+                        <div class="seat">
+                            <p>Seats  </p>
+                            <div class="seat-container">
+                                {% for seat in seats %}
+                                    <span class="s-name">{{seat}}</span>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-1">
+                    <div class="qr-code" id="qr-code">
+
+                    </div>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <div class="company-logo">
+                    <div class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="star line logo">
+                        <p>StarLine Bus Services (Ticket)</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download" id="download">
+            <button onclick="download()">Download</button>
+        </div>
+
+    </div>
+
+    <script>
+       var qrc = new QRCode(
+            document.getElementById("qr-code"),
+            "{{url}}"
+          );
+  </script>
+</body>
+</html>

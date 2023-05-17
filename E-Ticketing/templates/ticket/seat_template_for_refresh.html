@@ -1,0 +1,81 @@
+{% load static %}
+
+
+          <table class="seat-table">
+            {% for seats in seats_data %}
+                {% if forloop.counter == 10 %}
+                    <tr>
+                        <td class="none"></td>
+                        <td class="none"></td>
+
+                        <td class="none"></td>
+                        <td class="none"></td>
+                        <td class="none"></td>
+                    </tr>
+
+
+                {% endif %}
+
+                {% if forloop.counter == 10 %}
+
+                    <tr>
+                        {% for seat in seats %}
+                            {% if forloop.counter == 3 %}
+                                <td class="for-counter" style="background:#d7d7d7;border:none;"></td>
+
+                            {% else %}
+                                {% if seat.is_sold %}
+                                    <td class="occupied">
+                                        <p>{{seat.seat_name}}</p>
+                                    </td>
+                                {% else %}
+                                     <td class="not-occupied">
+                                        <p>{{seat.seat_name}}</p>
+                                     </td>
+                                {% endif %}
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </tr>
+
+                {% else %}
+                    <tr>
+                        {% for seat in seats %}
+                            {% if forloop.counter == 3 %}
+                                <td class="none"></td>
+
+                            {% else %}
+                                {% if forloop.counter <= 2 %}
+                                    <td class="for-counter" title="Occupied For Counter" >
+                                        <p>{{seat.seat_name}}</p>
+                                    </td>
+                                {% else %}
+                                    {% if seat.is_sold %}
+                                        <td class="occupied">
+                                            <p>{{seat.seat_name}}</p>
+                                        </td>
+                                    {% else %}
+                                         <td class="not-occupied">
+                                            <p>{{seat.seat_name}}</p>
+                                         </td>
+                                    {% endif %}
+
+                                {% endif %}
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </tr>
+                {% endif %}
+
+
+
+
+
+            {% endfor %}
+
+
+
+
+        </table>

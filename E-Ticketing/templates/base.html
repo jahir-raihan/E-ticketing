@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/ticket/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ticket/search_bus.css' %}">
+
+    {% block cssfile1 %}
+    {% endblock cssfile1 %}
+
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/search_bus.js' %}"></script>
+    <script src="{% static 'js/bus_lis.js' %}"></script>
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/cancel_ticket.js' %}"></script>
+    <script src="{% static 'js/trips.js' %}"></script>
+    {% block jsfile1 %}
+    {% endblock jsfile1 %}
+    {% block title %}
+
+    {% endblock title %}
+</head>
+<body id="main-body">
+    <header>
+        <nav>
+            <div class="left">
+                <a href="/" style="color:black; ">
+                <div class="logo">
+
+                    <img src="{% static 'images/logo.png' %}" alt="Star Line Logo">
+                    <p>StarLine Bus Service</p>
+                </div>
+                </a>
+                <!-- <p class="logo-txt">STAR LINE BD</p> -->
+            </div>
+            <div class="right">
+               <div class="profile" onclick="show_p_options()">
+                   <img src="{% static 'images/user.png' %}" alt="user icon">
+               </div>
+
+               <div class="dashboard-link" onclick="show_dash_options()" id="dashboard-link">
+                    <div class="ic">
+                        <div class="d-icon"></div>
+                        <div class="d-icon"></div>
+                        <div class="d-icon"></div>
+                    </div>
+                    <div class="ic">
+                        <div class="d-icon"></div>
+                        <div class="d-icon"></div>
+                        <div class="d-icon"></div>
+                    </div>
+                    <div class="ic">
+                        <div class="d-icon"></div>
+                        <div class="d-icon"></div>
+                        <div class="d-icon"></div>
+                    </div>
+
+
+               </div>
+
+               <div class="profile-toggle d-none  admin-user" id="profile-toggle">
+                <div class="arrow"></div>
+                   <ul>
+
+                        <li>
+                            <a href="{% url 'profile' %}">
+                               <img src="{% static 'images/user.png' %}" alt="">
+                               <a href="{% url 'profile' %}">view profile</a>
+                            </a>
+                        </li>
+
+                        <li>
+                           {% if request.user.is_authenticated %}
+                                <a href="{% url 'logout' %}">
+                                    <img src="{% static 'images/logout.png' %}" alt="">
+                                    <a href="{% url 'logout' %}">Log out</a>
+                                </a>
+                           {% else %}
+                                 <a href="{% url 'login' %}">
+                                    <img src="{% static 'images/login.png' %}" alt="">
+                                    <a href="{% url 'login' %}">Log in</a>
+                                 </a>
+                           {% endif %}
+                        </li>
+
+
+
+                        <li>
+                            <a href="{% url 'trips' %}">
+                                <img src="{% static 'images/history.png' %}" alt="">
+                                <a href="{% url 'trips' %}">Trip History</a>
+                            </a>
+                        </li>
+                   </ul>
+               </div>
+               <div class="profile-toggle d-none" id="dashboard-toggle">
+                   <div class="arrow"></div>
+                <ul>
+                     <li>
+                         <a href="{% url 'dashboard' %}">
+                            <img src="{% static 'images/dashboard.png' %}" alt="">
+                            <a href="{% url 'dashboard' %}">Dashboard</a>
+                         </a>
+                     </li>
+
+                     <li>
+                         <a href="{% url 'add_staff' %}">
+                             <img src="{% static 'images/add_staff.png' %}" alt="">
+                             <a href="{% url 'add_staff' %}">Add Staff</a>
+                         </a>
+                     </li>
+
+
+                     <li>
+                         <a href="{% url 'add_route' %}">
+                             <img src="{% static 'images/add_routes.png' %}" alt="">
+                             <a href="{% url 'add_route' %}">Add Routes</a>
+                         </a>
+                     </li>
+                </ul>
+            </div>
+
+            </div>
+        </nav>
+    </header>
+
+    {% csrf_token %}
+    <div class="loader loader-navigation d-none" id="bus_loader_navigation">
+
+
+    </div>
+
+    <div class="container" id="container">
+
+        {% block container %}
+
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <p>Select Destination and Date</p>
+                </div>
+                <div class="s-b-f">
+                    <div class="input from" >
+                        <label style="font-size:14px;" for="from" class="label">From</label>
+                        <div class="p-wrapper">
+                            <select name="from" id="from">
+                                <option>-------</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input to">
+                        <label for="to" style="font-size:14px;" class="label">To </label>
+                        <div class="p-wrapper">
+
+
+                            <select name="to" id="to">
+                                <option>-------</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input date" id="date">
+                        <label style="font-size:14px;" class="label" for="date">Date of journey</label>
+                        <div class="p-wrapper" id="datepicker">
+
+
+                            <input type="text"  id="d-p-inp" placeholder="pic a date" min="2022-06-11" >
+                            <img src="{% static 'images/calender.png' %}" alt="calender icon">
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button class="search-button s-f-b-btn" id="search-for-bus">
+                            <div class="loader s-f-b-l d-none" id="s-f-b-loader">
+
+                            </div>
+                            <div class="i-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14.019" height="14.393" viewBox="0 0 12.019 12.393">
+                                    <g id="Group_28" data-name="Group 28" transform="translate(-165 -185.45)">
+                                      <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(165 185.45)" fill="none" stroke="#fff" stroke-width="1">
+                                        <circle cx="4.164" cy="4.164" r="4.164" stroke="none"/>
+                                        <circle cx="4.164" cy="4.164" r="3.664" fill="none"/>
+                                      </g>
+                                      <line id="Line_6" data-name="Line 6" x2="4.655" y2="4.95" transform="translate(172 192.55)" fill="none" stroke="#fff" stroke-width="1"/>
+                                    </g>
+                                  </svg>
+                                <p>Search</p>
+                            </div>
+
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- <div class="ad-container">
+                <img draggable="false" src="/images/istockphoto-879364174-170667a.jpg" alt="">
+            </div> -->
+
+       </div>
+
+        {% endblock container %}
+    </div>
+
+
+
+    {% block footer %}
+
+    <footer class="" id="footer">
+        <div class="footer-content">
+
+
+            <div class="left">
+                <div class="about-start-line">
+                    <div class="a-s-l-title">
+                        <p> ABOUT STAR LINE</p>
+
+                    </div>
+                    <p class="address-txt">Star Line Paribahan is apparently a family owned transport company specializing in transportation of passenger bus services since 1990. From a humble beginning of local services, our transport system encompasses all reachable areas of Bangladesh and also beyond the border.</p>
+                    </div>
+            </div>
+
+            <div class="mid">
+                <div class="mid-contents">
+
+
+                    <div class="quick-links">
+                        <div class="q-l-title">
+                            <p>QUICK LINKS</p>
+                        </div>
+                        <div class="q-l">
+                            <ul>
+                                <li><span>></span><a class="color-geen" href="{% url 'home' %}"> Home</a></li>
+                                <li><span>></span><a href="{% url 'counter_info' %}"> Services</a></li>
+                                <li><span>></span><a href=""> About Us</a></li>
+                                <li><span>></span><a href="{% url 'counter_info' %}"> Contact Us</a></li>
+                                <li><span>></span><a href="#"> Query </a></li>
+                                <li><span>></span><a href="{% url 'cancel_ticket' %}"> Cancel Ticket</a></li>
+                            </ul>
+                        </div>
+                </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="address-bar">
+                    <div class="a-b-title">
+                        <p>ADDRESS</p>
+
+                    </div>
+                    <p class="address-txt">
+                        StartLine Paribahan <br>
+                        SSK Road,
+                        Feni Sadar Feni <br>
+                        Phone: 8315380 <br>
+                        Email: starline2009@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% endblock footer %}
+
+
+    {% block bottom_nav %}
+
+    <nav id="bottom-nav" class="main-nav bottom-nav">
+        <div class="b-n-container">
+
+
+            <section class="counter-info m-nav-section" s_no="1" id="counter-info">
+                <div class="icon">
+                    <img src="{% static 'images/info.png' %}" alt="info icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Counter Infos</p>
+                </div>
+            </section>
+            <section class="cancel-tickets m-nav-section" s_no="2" id="cancel-tickets">
+                <div class="icon">
+                    <img src="{% static 'images/cancel.png' %}" alt="cancel icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Cancel Ticket</p>
+                </div>
+            </section>
+            <section class="nav-home active-nav m-nav-section" s_no="3" id="nav-home">
+                <div class="icon">
+                    <img src="{% static 'images/home.png' %}" alt="home icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Home</p>
+                </div>
+            </section>
+            <section class="trips m-nav-section" s_no="4" id="trips">
+                <div class="icon">
+                    <img src="{% static 'images/trips.png' %}" alt="trips icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Trips</p>
+                </div>
+            </section>
+            <section class="options"  id="options-settings">
+                <div class="icon">
+                   <img src="{% static 'images/settings.png' %}" alt="options icon">
+
+                </div>
+                <div class="icon-txt">
+                    <p>Optiions</p>
+                </div>
+            </section>
+        </div>
+    </nav>
+
+    {% endblock bottom_nav %}
+</body>
+</html>

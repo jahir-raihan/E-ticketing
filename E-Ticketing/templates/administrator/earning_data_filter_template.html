@@ -1,0 +1,35 @@
+{% load static %}
+
+ <div class="r-trip booking-data">
+    <table>
+        <tr class="head-tr">
+            <td class="head-td">
+                <p>Date & Time</p>
+            </td>
+            <td class="head-td">
+                <p>Trips Made</p>
+            </td>
+            <td class="head-td">
+                <p>Total Earnings</p>
+            </td>
+        </tr>
+
+        {% for data in data %}
+             <tr>
+                <td class="td-center">
+                    <p>{{data.date|date:"%d %B, %Y"}}</p>
+                </td>
+                <td class="td-center">
+                    <p>{{data.count}}</p>
+                </td>
+                <td class="td-center">
+
+                    <p>{{data.amount}}</p>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>

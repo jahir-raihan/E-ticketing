@@ -1,0 +1,96 @@
+.p-wrapper input {
+  cursor: unset !important;
+}
+.disable-hover{
+    opacity:.6;
+}
+.disable-hover:hover{
+    border: 1.5px solid rgba(0, 0, 0, 0.196) !important;
+}
+
+.p-wrapper #opt-txt {
+  width: 100%;
+  min-width: 100%;
+  border: none;
+  max-height: 50px;
+  min-height: 50px;
+  outline: none;
+}
+
+.cancel-ticket-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 49% 49%;
+      grid-template-columns: 49% 49%;
+  gap: 2%;
+}
+
+.ad-container .ad-c-img-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(236, 105, 105, 0.565)), color-stop(rgba(152, 152, 152, 0.575)), to(rgba(248, 155, 239, 0.599)));
+  background: linear-gradient(rgba(236, 105, 105, 0.565), rgba(152, 152, 152, 0.575), rgba(248, 155, 239, 0.599));
+  top: 0;
+}
+
+.ad-container .ad-c-img-mask .refund-head {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-top: 1em;
+  opacity: .9;
+}
+
+.ad-container .ad-c-img-mask .refund-head p {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(252, 252, 252, 0.304);
+}
+
+.ad-container .ad-c-img-mask .steps {
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  width: 80%;
+  margin: 1em auto;
+}
+
+.ad-container .ad-c-img-mask ul {
+  list-style: circle;
+  width: 70%;
+  margin: auto;
+  color: white;
+  font-size: 14px;
+}
+
+.ad-container .ad-c-img-mask .note {
+  margin: 10% auto 0 auto;
+}
+
+.ad-container .ad-c-img-mask .note .policy-txts {
+  color: white;
+  font-size: 14px;
+  width: 70%;
+  margin: auto;
+}
+
+.disabled {
+  border: 1.5px solid rgba(0, 0, 0, 0.196) !important;
+  cursor: not-allowed;
+  opacity: .7 !important;
+}
+
+.disabled .label {
+  opacity: .7 !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .cancel-ticket-container {
+    -ms-grid-columns: 100% !important;
+        grid-template-columns: 100% !important;
+  }
+}
+/*# sourceMappingURL=cancel_ticket.css.map */

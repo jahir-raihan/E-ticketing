@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>{{title}}</title>
+{% endblock title %}
+
+{% block container %}
+<div class="search-for-bus">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+
+                </div>
+                <div class="s-b-f">
+                    <p class="error-msg-btn-p">
+                        {{msg1}}
+                        <span style="color:rgb(255, 153, 0); font-weight:550;">
+                            {{msg2}}
+                        </span>
+                    </p>
+                    <div class="btn error-msg-btn">
+                        <button class="search-button " id="search-for-bus" onclick="history.back();">
+                                <p>{{btn_name}}</p>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+ </div>
+{% endblock container %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block bottom_nav %}
+
+    <nav id="bottom-nav" class="main-nav bottom-nav">
+        <div class="b-n-container">
+
+
+            <section class="counter-info m-nav-section" s_no="1" id="counter-info">
+                <div class="icon">
+                    <img src="{% static 'images/info.png' %}" alt="info icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Counter Infos</p>
+                </div>
+            </section>
+            <section class="cancel-tickets m-nav-section" s_no="2" id="cancel-tickets">
+                <div class="icon">
+                    <img src="{% static 'images/cancel.png' %}" alt="cancel icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Cancel Ticket</p>
+                </div>
+            </section>
+            <section class="nav-home  m-nav-section" s_no="3" id="nav-home">
+                <div class="icon">
+                    <img src="{% static 'images/home.png' %}" alt="home icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Home</p>
+                </div>
+            </section>
+            <section class="trips m-nav-section" s_no="4" id="trips">
+                <div class="icon">
+                    <img src="{% static 'images/trips.png' %}" alt="trips icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Trips</p>
+                </div>
+            </section>
+            <section class="options" s_no="5" id="options-settings">
+                <div class="icon">
+                   <img src="{% static 'images/settings.png' %}" alt="options icon">
+
+                </div>
+                <div class="icon-txt">
+                    <p>Optiions</p>
+                </div>
+            </section>
+        </div>
+    </nav>
+
+{% endblock bottom_nav %}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/search_bus.css">
+    <link rel="stylesheet" href="/css/cancel_ticket.css">
+    <script src="/js/home.js"></script>
+    <script src="/js/search_bus.js"></script>
+    <title>Buy E-Ticket</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                <div class="logo">
+                    
+                    <img src="/images/logo.png" alt="">
+                    <p>StarLine Bus Service</p>
+                </div>
+                <!-- <p class="logo-txt">STAR LINE BD</p> -->
+            </div>
+            <div class="right">
+               <div class="profile" onclick="show_p_options()">
+                   <img src="/images/IMG_20220105_183432-02.jpeg" alt="">
+               </div>
+               <div class="profile-toggle d-none" id="profile-toggle">
+                   <ul>
+                        <li>
+                           <img src="/images/user.png" alt="">
+                           <a href="#">view profile</a>
+                        </li>
+
+                        <li>
+                            <img src="/images/logout.png" alt="">
+                           <a href="#">Log out</a>
+                        </li>
+
+                        <li>
+                            <img src="/images/history.png" alt="">
+                            <a href="#">Trip History</a>
+                        </li>
+                   </ul>
+               </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" id="container">
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <p>Cancel Ticket</p>
+                </div>
+                <div class="s-b-f">
+                    <div class="input from" id="from">
+                        <label style="font-size:14px;" for="from" class="label">Enter Ticket ID</label>
+                        <div class="p-wrapper">
+                            <input type="text" >
+                        </div>
+                    </div>
+                    <div class="input to" id="to">
+                        <label for="to" style="font-size:14px; opacity: .6;" class="label">Staff Email</label>
+                        <div class="p-wrapper disabled">
+
+                        
+                            <input type="email" value="exaple.staff@gmail.com" disabled>
+                        </div>
+                    </div>
+
+                    <div class="input date" id="date">
+                        <label style="font-size:14px; " class="label" for="date">Staff Password</label>
+                        <div class="p-wrapper" id="datepicker">
+
+                        
+                            <input type="password">
+                            
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button class="search-button" id="seaerch-btn">
+                            <div class="i-btn">
+                               <p>Submit</p>
+                            </div>
+                            
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="ad-container">
+                <img draggable="false" src="/images/refund.jpg" alt="">
+                <div class="ad-c-img-mask">
+                    <div class="refund-head">
+                        <p>Refund Policy & Guidelines</p>
+                    </div>
+                    <p class="steps">**Steps to Cancel Ticket</p>
+                    <ul>
+                        <li>Enter your Ticket ID</li>
+                        <li>Enter the code sent to Your Ticket Registered Email.</li>
+                    </ul>
+                    <div class="note">
+                        <p class="steps">**Terms and Conditions</p>
+                        <ul>
+                            <li>Cancelling Tickets will not be available in certain periods of the Year.
+                            Reasons can be for Festivals.</li>
+                            <li>Also you can't cancel the ticket which will deprature in range of 2 days, if you booked the ticket online.</li>
+                        </ul>
+                        <p class="policy-txts">
+                            
+                             
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+       </div>
+
+    </div>
+
+    <footer id="footer">
+        <div class="footer-content">
+
+        
+            <div class="left">
+                <div class="about-start-line">
+                    <div class="a-s-l-title">
+                        <p><span>| A</span> BOUT STAR LINE</p>
+
+                    </div>
+                    <p class="address-txt">Green Line Paribahan is apparently a family owned transport company specializing in transportation of passenger bus services since 1990. From a humble beginning of local services, our transport system encompasses all reachable areas of Bangladesh and also beyond the border, extending our reach to Kolkata in India.</p>
+                    </div>
+            </div>
+
+            <div class="mid">
+                <div class="mid-contents">
+
+                    
+                    <div class="quick-links">
+                        <div class="q-l-title">
+                            <p><span>| Q</span> UICK LINKS</p>
+                        </div>
+                        <div class="q-l">
+                            <ul>
+                                <li><span>></span><a class="color-green" href="#"> Home</a></li>
+                                <li><span>></span><a href="#"> Services</a></li>
+                                <li><span>></span><a href="#"> About Us</a></li>
+                                <li><span>></span><a href="#"> Contact Us</a></li>
+                                <li><span>></span><a href="#"> Query </a></li>
+                                <li><span>></span><a href="#"> Cancel Ticket</a></li>
+                            </ul>
+                        </div>
+                </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="address-bar">
+                    <div class="a-b-title">
+                        <p><span>| A</span> DDRESS</p>
+                        
+                    </div>
+                    <p class="address-txt">
+                        GreenLine Paribahan
+                        9/2, Outer Circular Road, Momen Bagh,
+                        Rajarbagh, Dhaka-1217
+                        Phone: 8315380
+                        Email: greenline2009@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <nav id="bottom-nav" class="main-nav bottom-nav">
+        <div class="b-n-container">
+
+            
+            <section class="counter-info" id="counter-info">
+                <div class="icon">
+                    <img src="/images/info.png" alt="">
+                </div>
+                <div class="icon-txt">
+                    <p>Counter Infos</p>
+                </div>
+            </section>
+            <section class="cancel-tickets active-nav" id="cancel-tickets">
+                <div class="icon">
+                    <img src="/images/cancel.png" alt="">
+                </div>
+                <div class="icon-txt">
+                    <p>Cancel Ticket</p>
+                </div>
+            </section>
+            <section class="nav-home " id="nav-home">
+                <div class="icon">
+                    <img src="/images/home.png" alt="">
+                </div>
+                <div class="icon-txt">
+                    <p>Home</p>
+                </div>
+            </section>
+            <section class="trips" id="trips">
+                <div class="icon">
+                    <img src="/images/trips.png" alt="">
+                </div>
+                <div class="icon-txt">
+                    <p>Trips</p>
+                </div>
+            </section>
+            <section class="options" id="options-settings">
+                <div class="icon">
+                   <img src="/images/settings.png" alt="">
+                      
+                </div>
+                <div class="icon-txt">
+                    <p>Optiions</p>
+                </div>
+            </section>
+        </div>
+    </nav>
+</body>
+</html>

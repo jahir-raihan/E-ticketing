@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssfile1 %}
+    <link rel="stylesheet" href="{% static 'css/ticket/trips.css' %}">
+    <link rel="stylesheet" href="{% static 'css/administrator/add_routing.css' %}">
+{% endblock cssfile1 %}
+
+{% block title %}
+    <title id="title">Counter Information</title>
+{% endblock title %}
+
+{% block container %}
+
+        <div class="search-for-bus">
+
+            <div class="search-f-b-container add-routing-container trips-main-container">
+                
+                <div class="s-b-head">
+                    <p>Station Infos & Contact</p>
+                </div>
+
+                <div class="trips-data">
+                    {% for route in routes %}
+                        <div class="station-data">
+                        <div class="current-trips">
+                            <p class="trips-title">
+                                {{route.from_location}} &ReverseEquilibrium; {{route.to_location}}
+                            </p>
+                            <table>
+                                <tr>
+                                    <td class="head-td">Station Name</td>
+                                    <td class="head-td">Station ID</td>
+                                    <td class="head-td">Contact</td>
+                                </tr>
+                                {% for sub_station in route.substations_set.all %}
+                                    <tr>
+                                        <td>{{sub_station.station_name}}</td>
+                                        <td>{{sub_station.id}}</td>
+                                        <td>{{sub_station.contact}}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                
+            </div>
+        </div>
+{% endblock container %}
+
+   
+{% block bottom_nav %}
+       <nav id="bottom-nav" class="main-nav bottom-nav">
+        <div class="b-n-container">
+
+
+            <section class="counter-info active-nav m-nav-section" s_no="1" id="counter-info">
+                <div class="icon">
+                    <img src="{% static 'images/info.png' %}" alt="info icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Counter Infos</p>
+                </div>
+            </section>
+            <section class="cancel-tickets m-nav-section" s_no="2" id="cancel-tickets">
+                <div class="icon">
+                    <img src="{% static 'images/cancel.png' %}" alt="cancel icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Cancel Ticket</p>
+                </div>
+            </section>
+            <section class="nav-home  m-nav-section" s_no="3" id="nav-home">
+                <div class="icon">
+                    <img src="{% static 'images/home.png' %}" alt="home icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Home</p>
+                </div>
+            </section>
+            <section class="trips m-nav-section" s_no="4" id="trips">
+                <div class="icon">
+                    <img src="{% static 'images/trips.png' %}" alt="trips icon">
+                </div>
+                <div class="icon-txt">
+                    <p>Trips</p>
+                </div>
+            </section>
+            <section class="options m-nav-section" s_no="5" id="options-settings">
+                <div class="icon">
+                   <img src="{% static 'images/settings.png' %}" alt="options icon">
+
+                </div>
+                <div class="icon-txt">
+                    <p>Optiions</p>
+                </div>
+            </section>
+        </div>
+    </nav>
+
+{% endblock bottom_nav %}

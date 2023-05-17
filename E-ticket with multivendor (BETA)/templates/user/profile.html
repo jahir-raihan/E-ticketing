@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/search_bus.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="/js/home.js"></script>
+    <script src="/js/search_bus.js"></script>
+    <title>Buy E-Ticket</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                <div class="logo">
+                    
+                    <img src="/images/logo.png" alt="">
+                    <p>StarLine Bus Service</p>
+                </div>
+                <!-- <p class="logo-txt">STAR LINE BD</p> -->
+            </div>
+            <div class="right">
+               <div class="profile" onclick="show_p_options()">
+                   <img src="/images/IMG_20220105_183432-02.jpeg" alt="">
+               </div>
+               <div class="profile-toggle d-none" id="profile-toggle">
+                   <ul>
+                        <li>
+                           <img src="/images/user.png" alt="">
+                           <a href="#">view profile</a>
+                        </li>
+
+                        <li>
+                            <img src="/images/logout.png" alt="">
+                           <a href="#">Log out</a>
+                        </li>
+
+                        <li>
+                            <img src="/images/history.png" alt="">
+                            <a href="#">Trip History</a>
+                        </li>
+                   </ul>
+               </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" id="container">
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container ">
+                <div class="profile-container">
+
+                    
+                    <img src="/images/user_1.png" alt="">
+                    <div class="name-phone">
+                        <p class="u-name">Jahir Raihan Joy</p>
+                        <p>01687277560</p>
+                    </div>
+
+                    <div class="other-info">
+                        <div class="o-i-flex-box">
+                            <p>Total Trips Made : </p>
+                            <p>120</p>
+                        </div>
+                        <div class="o-i-flex-box">
+                            <p>Total Spent : </p>
+                            <p>$52k</p>
+                        </div>
+                    </div>
+
+                    <div class="recent-trips">
+                       
+                        <p class="r-t-title">
+                            Recent Trips
+                        </p>
+                        <div class="r-t-container">
+                            <div class="r-trip booking-data">
+                                <table>
+                                    <tr class="head-tr">
+                                        <td class="head-td">
+                                            <p>Destination</p> 
+                                        </td>
+                                        <td class="head-td">
+                                            <p>Time & Date</p>
+                                        </td>
+                                        <td class="head-td">
+                                            <p>Bus & Fare</p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="td-center">
+                                            <p>Feni - Dhaka</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>11:00 PM , 11 July , 2022</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>Non Ac</p>
+                                            <p>1400 TK</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-center">
+                                            <p>Feni - Dhaka</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>11:00 PM , 11 July , 2022</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>Non Ac</p>
+                                            <p>1400 TK</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-center">
+                                            <p>Feni - Dhaka</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>11:00 PM , 11 July , 2022</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>Non Ac</p>
+                                            <p>1400 TK</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-center">
+                                            <p>Feni - Dhaka</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>11:00 PM , 11 July , 2022</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>Non Ac</p>
+                                            <p>1400 TK</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-center">
+                                            <p>Feni - Dhaka</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>11:00 PM , 11 July , 2022</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>Non Ac</p>
+                                            <p>1400 TK</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-center">
+                                            <p>Feni - Dhaka</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>11:00 PM , 11 July , 2022</p>
+                                        </td>
+                                        <td class="td-center">
+                                            <p>Non Ac</p>
+                                            <p>1400 TK</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                            </div>
+
+                            <a href="#">view all trips data</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="ad-container">
+                <img draggable="false" src="/images/istockphoto-879364174-170667a.jpg" alt="">
+            </div> -->
+
+       </div>
+
+    </div>
+
+   
+    
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/ticket/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ticket/search_bus.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user/login_register.css' %}">
+    {% block title %}
+        <title>Login</title>
+    {% endblock title %}
+
+    <script src="{% static 'js/user.js' %}"></script>
+</head>
+<body>
+    
+
+    <div class="container" id="container">
+        {% block container %}
+
+
+
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <img src="{% static '/images/logo.png' %}" alt="">
+                    <p>Login To Start Line</p>
+                </div>
+                <form id="login-form" method="post">
+                    {% csrf_token %}
+                <div class="s-b-f">
+                   
+                    <div class="input to" >
+                        <label style="font-size:14px;" class="label">Email </label>
+                        <div class="p-wrapper">
+
+                            <input type="email" placeholder="Enter Email . . ." required name="email">
+                        </div>
+                    </div>
+                    <div class="input to">
+                        <label  style="font-size:14px;" class="label">Password </label>
+                        <div class="p-wrapper">
+
+                            <input type="password" placeholder="Enter Password" required name="password">
+                        </div>
+                    </div>
+
+                    
+                    <div class="btn">
+                        <div class="loader s-f-b-l l-r-l d-none" id="login-loader">
+
+                            </div>
+                        <button class="search-button login-reg-btn" type="submit" id="log-reg-btn">
+                            Login
+                            
+                        </button>
+                    </div>
+
+                    <p class="register-link"><a href="{% url 'register' %}"> Don't have an account ? <span> Register Here</span></a></p>
+                    
+                </div>
+                </form>
+            </div>
+
+           
+
+       </div>
+        {% endblock container %}
+    </div>
+
+    
+   
+</body>
+</html>

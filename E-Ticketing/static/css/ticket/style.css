@@ -1,0 +1,116 @@
+.buy-seats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 1em 0;
+}
+
+.buy-seats .seat-table {
+  border-spacing: 4px;
+  width: 250px;
+  max-height: 488px;
+}
+
+.buy-seats .seat-table td {
+  border: 1px solid black;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px;
+  min-height: 40px;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.buy-seats .seat-table tr {
+  margin-top: .5em !important;
+}
+
+.buy-seats .seat-table .not-occupied:hover {
+  background: #0ca9f8 !important;
+  cursor: pointer;
+  color: white !important;
+  border: 1px solid #bababa !important;
+  -webkit-box-shadow: -1px 0px 15px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: -1px 0px 15px 1px rgba(0, 0, 0, 0.12);
+}
+
+.price-table {
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
+  margin: auto !important;
+  border-collapse: collapse !important;
+}
+
+.price-table td {
+  border: 1px solid black;
+  width: 100px !important;
+  min-width: 80px;
+  min-height: 30px;
+  height: 30px;
+  padding: .3em;
+  font-size: 13px;
+  text-align: center !important;
+}
+
+.price-table td {
+  width: 100px;
+}
+
+.price-table .s-name {
+  background: #0ca9f8;
+  color: white;
+  width: 30px;
+  padding: .5em;
+  margin: auto;
+  -webkit-box-shadow: -1px 0px 15px 1px rgba(0, 0, 0, 0.12);
+  box-shadow: -1px 0px 15px 1px rgba(0, 0, 0, 0.12);
+}
+
+.price-table .cancel {
+  background: red;
+  margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  padding: .2em .3em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.price-table .total {
+  text-align: right;
+  padding-right: 1em !important;
+}
+
+.price-table #total-amount {
+  text-align: center;
+  font-weight: bold;
+}
+
+.none {
+  border: none !important;
+}
+
+.occupied {
+  background: rgba(255, 122, 14, 0.846);
+  color: white;
+  border: none;
+  cursor: not-allowed;
+}
+
+.for-counter {
+  background: #939393;
+  color: white;
+  border: none;
+  cursor: no-drop;
+}
+
+.for-counter p {
+  opacity: .8;
+}
+/*# sourceMappingURL=style.css.map */

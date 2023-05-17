@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title id="title">Search for Bus</title>
+{% endblock title %}
+{% block jsfile1 %}
+    <script src="{% static 'js/only_for_s_f_b.js' %}"></script>
+{% endblock jsfile1 %}
+
+        {% block container %}
+
+       <div class="search-for-bus">
+
+            <div class="search-f-b-container">
+                <div class="s-b-head">
+                    <p>Select Destination and Date</p>
+                </div>
+                <form id="search_for_bus_form" method="post" autocomplete="off" >
+
+                    {% csrf_token %}
+                <div class="s-b-f">
+                    <div class="input from" >
+                        <label style="font-size:14px;" for="from" class="label">From</label>
+                        <div class="p-wrapper s-f-b-p-wrapper">
+                            <select name="from" id="from" required>
+                                <option value="">-------</option>
+                                {% for data in from %}
+                                    <option value="{{data}}">{{data}}</option>
+                                {% endfor %}
+
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="input to">
+                        <label for="to" style="font-size:14px;" class="label">To </label>
+                        <div class="p-wrapper s-f-b-p-wrapper" id="">
+
+
+                            <select name="to" id="to" required>
+                                <option value="">-------</option>
+                                {% for data in to %}
+                                    <option value="{{data}}">{{data}}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="input date" id="date">
+                        <label style="font-size:14px;" class="label" for="date">Date of journey</label>
+                        <div class="p-wrapper" id="datepicker">
+
+
+                            <input   id="d-p-inp" placeholder="pic a date" name="date" min="{{date_range}}"  required>
+                            <img src="{% static 'images/calender.png' %}" alt="calender icon">
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button class="search-button s-f-b-btn" id="search-for-bus"  type="submit">
+                            <div class="loader s-f-b-l d-none" id="s-f-b-loader">
+
+                            </div>
+                            <div class="i-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14.019" height="14.393" viewBox="0 0 12.019 12.393">
+                                    <g id="Group_28" data-name="Group 28" transform="translate(-165 -185.45)">
+                                      <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(165 185.45)" fill="none" stroke="#fff" stroke-width="1">
+                                        <circle cx="4.164" cy="4.164" r="4.164" stroke="none"/>
+                                        <circle cx="4.164" cy="4.164" r="3.664" fill="none"/>
+                                      </g>
+                                      <line id="Line_6" data-name="Line 6" x2="4.655" y2="4.95" transform="translate(172 192.55)" fill="none" stroke="#fff" stroke-width="1"/>
+                                    </g>
+                                  </svg>
+                                <p>Search</p>
+                            </div>
+
+                        </button>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+
+            <!-- <div class="ad-container">
+                <img draggable="false" src="/images/istockphoto-879364174-170667a.jpg" alt="">
+            </div> -->
+
+       </div>
+
+        {% endblock container %}
+

@@ -1,0 +1,254 @@
+{% load static %}
+{% load expression_compare %}
+
+<div class="seat-data-container" id="seat-data-container{{bus_id}}">
+
+
+
+    <div class="refresh" id="refreshid">
+        <button id="refresh-btn{{bus_id}}">Refresh</button>
+    </div>
+    <div class="buy-seats" id="buy-seats-id">
+        <div id="seat-table-container{{bus_id}}">
+        <table class="seat-table">
+            {% for seats in seats_data %}
+                {% if forloop.counter == 10 %}
+                    <tr>
+                        <td class="none"></td>
+                        <td class="none"></td>
+
+                        <td class="none"></td>
+                        <td class="none"></td>
+                        <td class="none"></td>
+                    </tr>
+
+
+                {% endif %}
+
+                {% if forloop.counter == 10 %}
+
+                    <tr>
+                        {% for seat in seats %}
+                            {% if forloop.counter == 3 %}
+                                <td class="for-counter" style="background:#d7d7d7;border:none;"></td>
+
+                            {% else %}
+                                {% if seat.is_sold %}
+                                    <td class="occupied">
+                                        <p>{{seat.seat_name}}</p>
+                                    </td>
+                                {% else %}
+                                     <td class="not-occupied">
+                                        <p>{{seat.seat_name}}</p>
+                                     </td>
+                                {% endif %}
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </tr>
+
+                {% else %}
+                    <tr>
+                        {% for seat in seats %}
+                            {% if forloop.counter == 3 %}
+                                <td class="none"></td>
+
+                            {% else %}
+                                {% if forloop.counter <= 2 %}
+                                    <td class="for-counter" title="Occupied For Counter" >
+                                        <p>{{seat.seat_name}}</p>
+                                    </td>
+                                {% else %}
+                                    {% if seat.is_sold %}
+                                        <td class="occupied">
+                                            <p>{{seat.seat_name}}</p>
+                                        </td>
+                                    {% else %}
+                                         <td class="not-occupied">
+                                            <p>{{seat.seat_name}}</p>
+                                         </td>
+                                    {% endif %}
+
+                                {% endif %}
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </tr>
+                {% endif %}
+
+
+
+
+
+            {% endfor %}
+
+
+
+
+        </table>
+        </div>
+        <div class="price-section">
+
+            <table class="price-table" id="price-table">
+                <tr>
+                    <td>Seat Name</td>
+                    <td>Price</td>
+                    <td>Action</td>
+                </tr>
+
+                <tr id="t-a-t">
+                    <td  class="total">Total</td>
+                    <td colspan="2" id="total-amount"><p>0 TK</p></td>
+                </tr>
+            </table>
+
+             <form id="select-boarding-point-form" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{bus_id}}" id="bus_id_for_seats" name="bus_id">
+                <input type="hidden" value="{{bus_no}}" name="bus_no" id="bus_no_for_queue">
+                <input type="hidden" value="{{route}}" name="route" id="route">
+                <div class="boarding-point">
+                    <label for="boarding_selector" style="opacity:.8;">Select Boarding Point</label>
+                    <div class="p-wrapper">
+                        <select name="boarding_selector" id="boarding_point" required>
+                            <option value="">----------</option>
+                            {% for station in boarding_points|dictsort:"distance_time" %}
+
+
+                                    <option value="{{station.station_name}}">{{station.station_name}} ({{station.distance_time}} min)</option>
+
+
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="proceed-to-payment-btn">
+                    <div class="loader-p-t-p d-none" id="loader-p-t-p">
+                    </div>
+                    <button class="p-t-p" id="loader-bus-p-t-p" type="submit">Proceed to payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var selected = [];var element = [];var total = 0;var price = {{bus.seat_price}};
+        var already_error_msg = false;
+
+        $(document).ready(function(){
+            $(".not-occupied").click(function(){
+                let ele = $(this);
+                let seat_name = ele[0].outerText;
+                if (!check_already_selected(seat_name) && selected.length <= 9){
+                    ele.css('background', 'rgb(12, 169, 248)');
+                    ele.css('color', 'white');
+                    ele.css('border', '1px solid white');
+                    selected.push(seat_name);
+                    element.push(ele);
+                    total += price;
+                    let temp = document.createElement('tr');
+
+
+                    temp.setAttribute('id', `${seat_name}`);
+                    temp.innerHTML = `<td><p class="s-name">${seat_name}</p></td> <td><p class="price">${price}</p></td><td> <p class="cancel" onclick="remove_seat('${seat_name}')">&#10006;</p></td>`;
+                    document.getElementById('total-amount').innerHTML = `<p>${total} TK</p>`;
+                    $('#t-a-t').before(temp);
+                    if (already_error_msg){
+                        document.getElementById('error-s-lis').remove();
+                        already_error_msg = false;
+                    }
+
+
+
+                };
+            });
+        });
+
+        function remove_seat(seat_id){
+            var idx = selected.indexOf(seat_id);
+            var ele = element[idx];
+            ele.css('background', 'unset');
+            ele.css('color', 'black');
+            ele.css('border', '1px solid black');
+            element.splice(idx, 1);
+            document.getElementById(seat_id).remove();
+
+            selected.splice(idx, 1);
+            total -= price;
+            document.getElementById('total-amount').innerHTML = `<p>${total} TK</p>`;
+        };
+        function check_already_selected(seat_name){
+            if (selected.includes(seat_name)){
+                return true;
+            };
+            return false;
+            };
+
+        // for buying seats
+
+        $(document).on('submit', '#select-boarding-point-form', function(e){
+
+            e.preventDefault();
+            if (selected.length === 0){
+                if (already_error_msg == false){
+                    already_error_msg = true;
+                    $('#price-table').after('<small id="error-s-lis" style="color:rgb(255, 102, 0);font-size:11px;">No seats were selected</small>');
+                }
+
+
+            }
+            else {
+                document.getElementById('loader-p-t-p').classList.remove('d-none');
+                document.getElementById('loader-bus-p-t-p').classList.add('loader-bus-p-t-p');
+
+                let req = $.ajax({
+                    type:'post',
+                    url: '/buy-seats/',
+                    data: {
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                        boarding_point: $('#boarding_point').val(),
+                        bus_id: $('#bus_id_for_seats').val(),
+                        bus_no: $('#bus_no_for_queue').val(),
+                        route: $('#route').val(),
+                        seats: selected,
+                        total: total,
+                    }
+
+
+                });
+                req.done(function(data){
+                    document.getElementById('loader-p-t-p').classList.add('d-none');
+                    document.getElementById('loader-bus-p-t-p').classList.remove('loader-bus-p-t-p');
+                    console.log(history);
+                    history.pushState({}, null, window.location);
+                    window.location.replace(`/passenger-info/wgs-starlineservicesecurechannel@456-bt75/${data.queue_id}/`);
+
+
+                });
+            };
+
+
+
+        });
+
+        $(document).on('click', '#refresh-btn{{bus_id}}', function(e){
+            e.preventDefault();
+            let req = $.ajax({
+                type:'post',
+                url:'/get-bus-seat-by-refresh/',
+                data:{
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    bus_id:{{bus_id}},
+                }
+            });
+            req.done(function(data){
+                console.log("data got 3");
+                $('#seat-table-container{{bus_id}}').html(data);
+            })
+        })
+    </script>
+ </div>

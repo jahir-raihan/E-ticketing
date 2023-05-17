@@ -1,0 +1,45 @@
+{% load static %}
+
+
+                                <table>
+                                    <tr class="head-tr">
+                                        <td class="head-td">User</td>
+                                        <td class="head-td">Destination & Time</td>
+
+                                        <td class="head-td">Fare & Bus Info</td>
+                                        <td class="head-td">Bus No</td>
+                                    </tr>
+
+                                    <div class="recent-booking-data" id="recent-booking-data">
+                                        {% for rec_data  in data %}
+                                             <tr>
+                                                <td class="td-center">
+
+                                                    <div class="p-pic-info">
+                                                        <p class="name">{{rec_data.user_name}}</p>
+                                                        <p class="number">{{rec_data.user_phone}}</p>
+                                                    </div>
+
+                                                </td>
+                                                <td class="td-center">
+                                                    <p>{{rec_data.route}}</p>
+                                                    <p>
+                                                    {{rec_data.date_time|date:" d F, Y"}}
+                                                    </p>
+                                                    <p>{{rec_data.date_time|time:" P"}}</p>
+                                                </td>
+
+                                                <td class="td-center">
+                                                    <p>{{rec_dat.bus.bus_type}}</p>
+                                                    <p>{{rec_data.amount}} TK</p>
+                                                </td>
+                                                <td class="td-center">
+                                                    <p>{{rec_data.bus_no}}</p>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+
+
+                                    </div>
+                                </table>
